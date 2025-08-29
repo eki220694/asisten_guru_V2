@@ -1,4 +1,3 @@
-# .github/workflows/deploy-server.yml
 name: Deploy Backend to Railway
 
 on:
@@ -14,6 +13,6 @@ jobs:
 
       - name: Deploy to Railway
         run: |
-          curl -X POST https://railway.app/api/deploy \
-            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          curl -X POST https://railway.app/api/deploy \\
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \\
             -d '{"projectId": "${{ secrets.RAILWAY_PROJECT_ID }}"}'
