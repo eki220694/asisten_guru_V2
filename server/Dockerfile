@@ -3,10 +3,10 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY server/package*.json ./
+COPY package*.json ./
 RUN npm install
 
-COPY server/ .
+COPY . .
 
 # Install Prisma CLI and generate client
 RUN npx prisma generate

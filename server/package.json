@@ -1,1 +1,28 @@
-{\n  \"name\": \"asisten-guru-server\",\n  \"version\": \"1.0.0\",\n  \"main\": \"server.js\",\n  \"scripts\": {\n    \"dev\": \"nodemon server.js\",\n    \"start\": \"node server.js\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\",\n    \"prisma:generate\": \"npx prisma generate\",\n    \"prisma:studio\": \"npx prisma studio\",\n    \"prisma:migrate\": \"npx prisma migrate dev\",\n    \"prisma:deploy\": \"npx prisma migrate deploy\",\n    \"prisma:seed\": \"node scripts/seed.js\"\n  },\n  \"dependencies\": {\n    \"@prisma/client\": \"^6.15.0\",\n    \"bcrypt\": \"^5.1.1\",\n    \"cors\": \"^2.8.5\",\n    \"dotenv\": \"^17.2.1\",\n    \"express\": \"^4.18.2\",\n    \"jsonwebtoken\": \"^9.0.2\",\n    \"openai\": \"^5.16.0\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^3.0.1\",\n    \"prisma\": \"^6.15.0\"\n  }\n}
+{
+  "name": "asisten-guru-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:deploy": "npx prisma migrate deploy",
+    "prisma:seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^5.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prisma": "^6.15.0"
+  }
+}

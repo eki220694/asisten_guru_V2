@@ -1,74 +1,110 @@
-# Halaman Bantuan
+// src/pages/HelpPage.jsx
+import React from 'react';
 
-## ❓ Cara Menggunakan Generator Soal AI
+const HelpPage = () => {
+  return (
+    <div className="help-page">
+      <h2>Halaman Bantuan</h2>
+      
+      <div className="help-section">
+        <h3>❓ Cara Menggunakan Generator Soal AI</h3>
+        <ol>
+          <li><strong>Isi Formulir</strong>:
+            <ul>
+              <li>Pilih mata pelajaran (misal: Matematika)</li>
+              <li>Masukkan topik (misal: Trigonometri)</li>
+              <li>Pilih level kesulitan (Mudah/Sedang/Sulit)</li>
+              <li>Tentukan jumlah soal (1-50)</li>
+            </ul>
+          </li>
+          <li><strong>Klik "Buat Soal"</strong>:
+            <ul>
+              <li>Jika API key aktif, soal akan di-generate oleh AI.</li>
+              <li>Jika tidak, sistem menggunakan dummy data otomatis.</li>
+            </ul>
+          </li>
+          <li><strong>Lihat Hasil</strong>:
+            <ul>
+              <li>Soal akan muncul di bawah dalam bentuk kartu.</li>
+              <li>Setiap soal menampilkan:</li>
+              <ul>
+                <li>Soal</li>
+                <li>Opsi jawaban</li>
+                <li>Jawaban benar</li>
+              </ul>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      
+      <div className="help-section">
+        <h3>❓ Cara Mengelola Materi</h3>
+        <ol>
+          <li><strong>Tambah Materi</strong>:
+            <ul>
+              <li>Klik menu "Bank Materi"</li>
+              <li>Isi judul, kelas, mata pelajaran</li>
+              <li>Pilih tipe (PDF/Video/Gambar)</li>
+              <li>Masukkan URL materi</li>
+            </ul>
+          </li>
+          <li><strong>Akses Materi</strong>:
+            <ul>
+              <li>Semua materi tersedia di daftar</li>
+              <li>Klik "Lihat" untuk membuka materi</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      
+      <div className="help-section">
+        <h3>❓ Cara Mengelola Agenda</h3>
+        <ol>
+          <li><strong>Tambah Agenda</strong>:
+            <ul>
+              <li>Klik menu "Agenda KBM"</li>
+              <li>Isi judul, tanggal, waktu</li>
+              <li>Tambahkan lokasi/catatan jika perlu</li>
+            </ul>
+          </li>
+          <li><strong>Lihat Agenda</strong>:
+            <ul>
+              <li>Semua agenda ditampilkan berurutan</li>
+              <li>Mudah diakses untuk persiapan mengajar</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      
+      <div className="help-section">
+        <h3>❓ Integrasi AI</h3>
+        <p>Untuk aktifkan AI, lihat <code>AI_INTEGRATION_DOCS.md</code></p>
+        <p>Pastikan API key OpenAI valid & aktif</p>
+        <p>AI akan otomatis digunakan jika tersedia</p>
+      </div>
+      
+      <div className="help-section">
+        <h3>❓ Masalah Umum</h3>
+        <h4>Tidak Bisa Generate Soal</h4>
+        <ul>
+          <li>Pastikan server berjalan</li>
+          <li>Cek koneksi internet</li>
+          <li>Periksa API key jika menggunakan fitur AI</li>
+        </ul>
+        
+        <h4>Data Tidak Muncul</h4>
+        <ul>
+          <li>Refresh halaman</li>
+          <li>Cek apakah server & database aktif</li>
+        </ul>
+      </div>
+      
+      <div className="help-section">
+        <h3>📞 Butuh Bantuan Lebih Lanjut?</h3>
+        <p>Hubungi tim pengembang atau buat issue di GitHub.</p>
+      </div>
+    </div>
+  );
+};
 
-1. **Isi Formulir**:
-   - Pilih mata pelajaran (misal: Matematika)
-   - Masukkan topik (misal: Trigonometri)
-   - Pilih level kesulitan (Mudah/Sedang/Sulit)
-   - Tentukan jumlah soal (1-50)
-
-2. **Klik "Buat Soal"**:
-   - Jika API key aktif, soal akan di-generate oleh AI.
-   - Jika tidak, sistem menggunakan dummy data otomatis.
-
-3. **Lihat Hasil**:
-   - Soal akan muncul di bawah dalam bentuk kartu.
-   - Setiap soal menampilkan:
-     - Soal
-     - Opsi jawaban
-     - Jawaban benar
-
----
-
-## ❓ Cara Mengelola Materi
-
-1. **Tambah Materi**:
-   - Klik menu "Bank Materi"
-   - Isi judul, kelas, mata pelajaran
-   - Pilih tipe (PDF/Video/Gambar)
-   - Masukkan URL materi
-
-2. **Akses Materi**:
-   - Semua materi tersedia di daftar
-   - Klik "Lihat" untuk membuka materi
-
----
-
-## ❓ Cara Mengelola Agenda
-
-1. **Tambah Agenda**:
-   - Klik menu "Agenda KBM"
-   - Isi judul, tanggal, waktu
-   - Tambahkan lokasi/catatan jika perlu
-
-2. **Lihat Agenda**:
-   - Semua agenda ditampilkan berurutan
-   - Mudah diakses untuk persiapan mengajar
-
----
-
-## ❓ Integrasi AI
-
-- Untuk aktifkan AI, lihat `AI_INTEGRATION_DOCS.md`
-- Pastikan API key OpenAI valid & aktif
-- AI akan otomatis digunakan jika tersedia
-
----
-
-## ❓ Masalah Umum
-
-### Tidak Bisa Generate Soal
-- Pastikan server berjalan
-- Cek koneksi internet
-- Periksa API key jika menggunakan fitur AI
-
-### Data Tidak Muncul
-- Refresh halaman
-- Cek apakah server & database aktif
-
----
-
-## 📞 Butuh Bantuan Lebih Lanjut?
-
-Hubungi tim pengembang atau buat issue di GitHub.
+export default HelpPage;
