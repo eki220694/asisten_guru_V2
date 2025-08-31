@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
@@ -8,11 +8,27 @@ import AssessmentPage from './pages/AssessmentPage';
 import MaterialPage from './pages/MaterialPage';
 import SchedulePage from './pages/SchedulePage';
 import HelpPage from './pages/HelpPage';
+import LoadingScreen from './components/LoadingScreen';
 import './App.css';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
   return (
-    <Router>
+    <Router basename="/app">
       <div className="app">
         <Navbar />
         <div className="main-layout">

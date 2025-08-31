@@ -1,5 +1,6 @@
 /* src/pages/QuestionGenerator.jsx */
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '../config/api';
 
 const QuestionGenerator = () => {
   const [formData, setFormData] = useState({
@@ -16,9 +17,14 @@ const QuestionGenerator = () => {
   }, []);
 
   const fetchQuestions = async () => {
-    const res = await fetch('http://localhost:5000/api/questions');
-    const data = await res.json();
-    setQuestions(data);
+    try {
+      const res = await fetch(`${API_BASE_URL}/questions`);
+      const data = await res.json();
+      setQuestions(data);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+      alert('Gagal memuat soal. Silakan coba lagi.');
+    }
   };
 
   const handleChange = (e) => {
@@ -31,17 +37,22 @@ const QuestionGenerator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch('http://localhost:5000/api/questions/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-    if (data.error) {
-      alert('Error: ' + data.error);
-    } else {
-      alert('Soal berhasil dibuat!');
-      fetchQuestions(); // Refresh list
+    try {
+      const res = await fetch(`${API_BASE_URL}/questions/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.error) {
+        alert('Error: ' + data.error);
+      } else {
+        alert('Soal berhasil dibuat!');
+        fetchQuestions(); // Refresh list
+      }
+    } catch (error) {
+      console.error('Error generating questions:', error);
+      alert('Gagal membuat soal. Silakan coba lagi.');
     }
     setLoading(false);
   };

@@ -3,7 +3,7 @@ const { PrismaClient } = require('@prisma/client');
 const aiService = require('../services/aiService');
 const prisma = new PrismaClient();
 
-exports.generateQuestions = async (req, res) => {
+exports.generateQuestions = async (req, res, next) => {
   const { subject, topic, level, count } = req.body;
 
   try {
@@ -41,15 +41,15 @@ exports.generateQuestions = async (req, res) => {
 
     res.status(201).json(savedQuestions);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    next(err); // Teruskan error ke error handler global
   }
 };
 
-exports.getQuestions = async (req, res) => {
+exports.getQuestions = async (req, res, next) => {
   try {
     const questions = await prisma.question.findMany();
     res.json(questions);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    next(err); // Teruskan error ke error handler global
   }
 };
