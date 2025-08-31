@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 
 // Middleware
 const corsOptions = {
-  origin: process.env.CLIENT_URL || ['http://localhost:5173', 'http://localhost:4173', /\.netlify\.app$/],
+  origin: process.env.CLIENT_URL || ['http://localhost:5173', 'http://localhost:4173', /\.netlify\.app$/, /\.vercel\.app$/],
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -44,8 +44,15 @@ app.get('/health', (req, res) => {
 // Global error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Health check available at http://localhost:${PORT}/health`);
-});
+// Vercel serverless function export
+if (require.main === module) {
+  // Running as a standalone server
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Health check available at http://localhost:${PORT}/health`);
+  });
+} else {
+  // Export for Vercel serverless functions
+  module.exports = app;
+}
