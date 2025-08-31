@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <Router basename="/app">
+    <Router>
       <div className="app">
         <Navbar />
         <div className="main-layout">
