@@ -58,49 +58,71 @@ const QuestionGenerator = () => {
   };
 
   return (
-    <div>
-      <h2>Generator Soal & Kisi-Kisi Ujian</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Mata Pelajaran:</label>
-          <input name="subject" value={formData.subject} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Topik:</label>
-          <input name="topic" value={formData.topic} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Tingkat Kesulitan:</label>
-          <select name="level" value={formData.level} onChange={handleChange}>
-            <option value="easy">Mudah</option>
-            <option value="medium">Sedang</option>
-            <option value="hard">Sulit</option>
-          </select>
-        </div>
-        <div>
-          <label>Jumlah Soal:</label>
-          <input
-            type="number"
-            name="count"
-            value={formData.count}
-            onChange={handleChange}
-            min="1"
-            max="50"
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Membuat Soal...' : 'Buat Soal'}
-        </button>
-      </form>
+    <div className="page-container">
+      <h2 className="page-title">Generator Soal & Kisi-Kisi Ujian</h2>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Mata Pelajaran:</label>
+            <input 
+              name="subject" 
+              value={formData.subject} 
+              onChange={handleChange} 
+              required 
+              placeholder="Masukkan mata pelajaran"
+            />
+          </div>
+          <div className="form-group">
+            <label>Topik:</label>
+            <input 
+              name="topic" 
+              value={formData.topic} 
+              onChange={handleChange} 
+              required 
+              placeholder="Masukkan topik pembelajaran"
+            />
+          </div>
+          <div className="form-group">
+            <label>Tingkat Kesulitan:</label>
+            <select name="level" value={formData.level} onChange={handleChange}>
+              <option value="easy">Mudah</option>
+              <option value="medium">Sedang</option>
+              <option value="hard">Sulit</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Jumlah Soal:</label>
+            <input
+              type="number"
+              name="count"
+              value={formData.count}
+              onChange={handleChange}
+              min="1"
+              max="50"
+              placeholder="Jumlah soal (1-50)"
+            />
+          </div>
+          <button type="submit" className="btn" disabled={loading}>
+            {loading ? 'Membuat Soal...' : 'Buat Soal'}
+          </button>
+        </form>
+      </div>
 
-      <h3>Bank Soal</h3>
+      <h3 className="section-title">Bank Soal</h3>
       <div className="question-list">
         {questions.map((q) => (
           <div key={q.id} className="question-card">
             <h4>{q.subject} - {q.topic} ({q.level})</h4>
-            <p><strong>Soal:</strong> {q.question}</p>
-            <p><strong>Opsi:</strong> {JSON.parse(q.options).join(', ')}</p>
-            <p><strong>Jawaban Benar:</strong> {q.answer}</p>
+            <p className="question-text"><strong>Soal:</strong> {q.question}</p>
+            <div className="options">
+              <strong>Opsi:</strong>
+              <ul>
+                {JSON.parse(q.options).map((option, index) => (
+                  <li key={index}>{String.fromCharCode(65 + index)}. {option}</li>
+                ))}
+              </ul>
+            </div>
+            <p className="answer"><strong>Jawaban Benar:</strong> {q.answer}</p>
           </div>
         ))}
       </div>

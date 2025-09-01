@@ -1,8 +1,10 @@
 /* src/components/Sidebar.jsx */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
+  const location = useLocation();
+  
   const menuItems = [
     { name: 'Generator Soal', path: '/questions' },
     { name: 'Penilaian Ujian', path: '/assessment' },
@@ -16,7 +18,12 @@ const Sidebar = () => {
       <ul>
         {menuItems.map((item, index) => (
           <li key={index}>
-            <Link to={item.path}>{item.name}</Link>
+            <Link 
+              to={item.path} 
+              className={location.pathname === item.path || (item.path === '/questions' && location.pathname === '/') ? 'active' : ''}
+            >
+              {item.name}
+            </Link>
           </li>
         ))}
       </ul>
