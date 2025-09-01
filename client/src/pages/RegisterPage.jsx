@@ -30,6 +30,12 @@ const RegisterPage = () => {
       return;
     }
     
+    // Validasi panjang password
+    if (formData.password.length < 6) {
+      setError('Password minimal 6 karakter');
+      return;
+    }
+    
     setLoading(true);
     setError('');
     
@@ -88,6 +94,7 @@ const RegisterPage = () => {
               onChange={handleChange}
               required
               placeholder="Masukkan nama lengkap Anda"
+              autoComplete="name"
             />
           </div>
           
@@ -100,6 +107,8 @@ const RegisterPage = () => {
               onChange={handleChange}
               required
               placeholder="Masukkan email Anda"
+              autoComplete="email"
+              inputMode="email"
             />
           </div>
           
@@ -111,7 +120,9 @@ const RegisterPage = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              placeholder="Masukkan password"
+              placeholder="Masukkan password (min. 6 karakter)"
+              autoComplete="new-password"
+              minLength="6"
             />
           </div>
           
@@ -124,6 +135,8 @@ const RegisterPage = () => {
               onChange={handleChange}
               required
               placeholder="Konfirmasi password Anda"
+              autoComplete="new-password"
+              minLength="6"
             />
           </div>
           

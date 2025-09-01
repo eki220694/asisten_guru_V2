@@ -81,6 +81,7 @@ const MaterialPage = () => {
               onChange={handleChange} 
               required 
               placeholder="Masukkan judul materi"
+              autoComplete="off"
             />
           </div>
           <div className="form-group">
@@ -91,6 +92,7 @@ const MaterialPage = () => {
               onChange={handleChange} 
               required 
               placeholder="Masukkan kelas (contoh: X, XI, XII)"
+              autoComplete="off"
             />
           </div>
           <div className="form-group">
@@ -101,6 +103,7 @@ const MaterialPage = () => {
               onChange={handleChange} 
               required 
               placeholder="Masukkan mata pelajaran"
+              autoComplete="off"
             />
           </div>
           <div className="form-group">
@@ -119,6 +122,7 @@ const MaterialPage = () => {
               onChange={handleChange} 
               required 
               placeholder="Masukkan URL materi"
+              autoComplete="off"
             />
           </div>
           <button type="submit" className="btn">Simpan Materi</button>
@@ -128,15 +132,25 @@ const MaterialPage = () => {
       <h3 className="section-title">Daftar Materi</h3>
       <div className="list-container">
         {materials.length > 0 ? (
-          <ul>
-            {materials.map((m) => (
-              <li key={m.id}>
-                <span className="material-icon">{getTypeIcon(m.type)}</span>
-                <strong>{m.title}</strong> ({m.class} - {m.subject}) - {m.type}: 
-                <a href={m.url} target="_blank" rel="noreferrer" className="material-link"> Lihat</a>
-              </li>
-            ))}
-          </ul>
+          materials.map((m) => (
+            <div className="material-item" key={m.id}>
+              <span className="material-icon">{getTypeIcon(m.type)}</span>
+              <div className="material-info">
+                <div className="material-title">{m.title}</div>
+                <div className="material-meta">
+                  {m.class} - {m.subject} ({m.type})
+                </div>
+              </div>
+              <a 
+                href={m.url} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="material-link"
+              >
+                Lihat
+              </a>
+            </div>
+          ))
         ) : (
           <p>Belum ada materi yang tersedia.</p>
         )}

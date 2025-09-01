@@ -1,9 +1,11 @@
 /* src/components/Navbar.jsx */
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuth } from './AuthContext';
+import { SidebarContext } from '../App';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const { toggleMobileSidebar } = useContext(SidebarContext);
 
   const handleLogout = () => {
     logout();
@@ -13,6 +15,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <button className="hamburger" onClick={toggleMobileSidebar}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <h2>Asisten Guru V2</h2>
       <div>
         {user ? (

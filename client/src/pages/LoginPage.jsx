@@ -75,6 +75,8 @@ const LoginPage = () => {
               onChange={handleChange}
               required
               placeholder="Masukkan email Anda"
+              autoComplete="email"
+              inputMode="email"
             />
           </div>
           
@@ -87,6 +89,7 @@ const LoginPage = () => {
               onChange={handleChange}
               required
               placeholder="Masukkan password Anda"
+              autoComplete="current-password"
             />
           </div>
           
