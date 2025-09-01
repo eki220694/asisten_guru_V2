@@ -1,4 +1,4 @@
-name: Deploy to Netlify and Railway
+name: Deploy to Netlify and Vercel
 
 on:
   push:
@@ -51,9 +51,12 @@ jobs:
           cd server
           npm install
           
-      - name: Deploy to Railway
-        uses: railwayapp/actions/cli@v2
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
         with:
-          railway-token: ${{ secrets.RAILWAY_TOKEN }}
-          railway-project: ${{ secrets.RAILWAY_PROJECT_ID }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: server
         continue-on-error: true # Continue even if this fails

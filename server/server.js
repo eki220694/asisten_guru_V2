@@ -45,14 +45,4 @@ app.get('/health', (req, res) => {
 app.use(errorHandler);
 
 // Vercel serverless function export
-if (require.main === module) {
-  // Running as a standalone server
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Health check available at http://localhost:${PORT}/health`);
-  });
-} else {
-  // Export for Vercel serverless functions
-  module.exports = app;
-}
+module.exports = app;
