@@ -1,29 +1,24 @@
 {
   "name": "asisten-guru-server",
   "version": "1.0.0",
+  "description": "Backend for Asisten Guru V2",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "npx prisma generate",
-    "prisma:generate": "npx prisma generate",
-    "prisma:studio": "npx prisma studio",
-    "prisma:migrate": "npx prisma migrate dev",
-    "prisma:deploy": "npx prisma migrate deploy",
-    "prisma:seed": "node scripts/seed.js"
+    "dev": "nodemon server.js",
+    "vercel-build": "echo 'No build step required for Node.js server on Vercel'",
+    "create-admin": "node scripts/createAdmin.js"
   },
   "dependencies": {
-    "@prisma/client": "^6.15.0",
-    "bcrypt": "^5.1.1",
+    "@prisma/client": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.1",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "openai": "^5.16.0"
+    "openai": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
-    "prisma": "^6.15.0"
+    "prisma": "^5.0.0"
   }
 }
