@@ -11,7 +11,7 @@ Aplikasi web untuk membantu tugas sehari-hari guru dengan fitur:
 Aplikasi dapat diakses langsung melalui browser tanpa perlu instalasi:
 
 **Frontend (Antarmuka Pengguna)**: [https://asisten-guru.netlify.app](https://asisten-guru.netlify.app) *(akan diperbarui setelah deployment)*
-**Backend (API Server)**: [https://asisten-guru-server.up.railway.app](https://asisten-guru-server.up.railway.app) *(akan diperbarui setelah deployment)*
+**Backend (API Server)**: [https://asisten-guru-v2.vercel.app](https://asisten-guru-v2.vercel.app) *(akan diperbarui setelah deployment)*
 
 ### 📱 Cara Menggunakan
 1. Buka browser Anda (Chrome, Firefox, Safari, dll)
@@ -52,16 +52,17 @@ npm run dev
 ### 🚀 Deployment
 Proyek ini dikonfigurasi untuk deployment otomatis menggunakan GitHub Actions:
 - **Frontend**: Netlify
-- **Backend**: Railway
+- **Backend**: Vercel
 - **Database**: SQLite (file-based)
 
 #### Prasyarat Deployment
-1. Buat akun di Netlify dan Railway
+1. Buat akun di Netlify dan Vercel
 2. Tambahkan secrets berikut di GitHub:
    - `NETLIFY_AUTH_TOKEN`
    - `NETLIFY_SITE_ID`
-   - `RAILWAY_TOKEN`
-   - `RAILWAY_PROJECT_ID`
+   - `VERCEL_TOKEN`
+   - `VERCEL_PROJECT_ID`
+   - `VERCEL_ORG_ID`
 
 #### Cara Deploy
 1. Push ke branch `main`
@@ -71,7 +72,7 @@ Proyek ini dikonfigurasi untuk deployment otomatis menggunakan GitHub Actions:
 ### 🧠 Fitur AI
 Untuk mengaktifkan fitur generator soal berbasis AI:
 1. Dapatkan API key dari [OpenAI Platform](https://platform.openai.com/account/api-keys)
-2. Tambahkan ke environment variables Railway:
+2. Tambahkan ke environment variables Vercel:
    - `OPENAI_API_KEY=sk-xxxxxx`
 
 ## 📁 Struktur Proyek

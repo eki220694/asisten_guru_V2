@@ -10,7 +10,7 @@ Anda telah berhasil menyelesaikan pengembangan Asisten Guru V2. Aplikasi ini sek
 Sebelum deployment, pastikan Anda memiliki:
 - Akun GitHub (gratis di github.com)
 - Akun Netlify (gratis di netlify.com)
-- Akun Railway (gratis di railway.app)
+- Akun Vercel (gratis di vercel.com)
 - API Key OpenAI (opsional, untuk fitur AI di platform.openai.com)
 
 ### 2. Persiapan Repository
@@ -31,35 +31,37 @@ Sebelum deployment, pastikan Anda memiliki:
    - Publish directory: `dist/`
 5. Klik "Deploy site"
 
-### 4. Deploy Backend ke Railway
-1. Masuk ke Railway Dashboard
+### 4. Deploy Backend ke Vercel
+1. Masuk ke Vercel Dashboard
 2. Klik "New Project"
-3. Pilih "Deploy from GitHub repo"
+3. Pilih "Import Git Repository"
 4. Pilih repository Anda
-5. Konfigurasi service:
+5. Konfigurasi project:
    - Root directory: `server/`
-   - Build command: `npm install`
-   - Start command: `npm start`
+   - Framework Preset: Other
+   - Build command: `npm run vercel-build`
+   - Output directory: (biarkan default)
 6. Klik "Deploy"
 
 ### 5. Konfigurasi Environment Variables
-Di Railway, tambahkan environment variables:
+Di Vercel, tambahkan environment variables:
 - `OPENAI_API_KEY` (jika menggunakan fitur AI)
-- Pastikan `PORT` diset ke 5000 atau sesuai konfigurasi
+- Database akan menggunakan file SQLite yang tersimpan di Vercel
 
 ### 6. Konfigurasi GitHub Actions (Opsional untuk Deploy Otomatis)
 1. Di GitHub, masuk ke Settings > Secrets and variables > Actions
 2. Tambahkan secrets berikut:
    - `NETLIFY_AUTH_TOKEN`: Token dari Netlify
    - `NETLIFY_SITE_ID`: ID site dari Netlify
-   - `RAILWAY_TOKEN`: Token dari Railway
-   - `RAILWAY_PROJECT_ID`: ID project dari Railway
+   - `VERCEL_TOKEN`: Token dari Vercel
+   - `VERCEL_PROJECT_ID`: ID project dari Vercel
+   - `VERCEL_ORG_ID`: ID organization dari Vercel
 
 ## 🌐 Akses Aplikasi
 
 Setelah deployment selesai:
 - **Frontend**: `https://nama-site-anda.netlify.app`
-- **Backend**: `https://nama-service-anda.up.railway.app`
+- **Backend**: `https://nama-proyek-anda.vercel.app`
 
 ## 📱 Pengalaman Pengguna
 
@@ -73,13 +75,13 @@ Guru-guru dapat mengakses aplikasi langsung melalui browser:
 
 Untuk menggunakan generator soal berbasis AI:
 1. Dapatkan API key dari OpenAI Platform
-2. Tambahkan ke environment variables Railway
-3. Restart service di Railway
+2. Tambahkan ke environment variables Vercel
+3. Restart service di Vercel
 
 ## 📞 Dukungan dan Pemeliharaan
 
 ### Monitoring
-- Cek status di dashboard Netlify dan Railway
+- Cek status di dashboard Netlify dan Vercel
 - Monitor logs untuk error
 - Pastikan health check endpoint berfungsi (`/health`)
 
@@ -89,7 +91,7 @@ Untuk menggunakan generator soal berbasis AI:
 - Untuk update manual, trigger deploy ulang di platform masing-masing
 
 ### Troubleshooting
-- Jika ada error, cek logs di Netlify/Railway
+- Jika ada error, cek logs di Netlify/Vercel
 - Pastikan semua environment variables sudah benar
 - Verifikasi koneksi database
 - Cek CORS configuration jika ada masalah akses API

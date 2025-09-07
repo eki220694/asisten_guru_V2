@@ -11,7 +11,7 @@ Aplikasi web untuk membantu tugas sehari-hari guru dengan fitur:
 Aplikasi dapat diakses langsung melalui browser tanpa perlu instalasi:
 
 **Frontend (Antarmuka Pengguna)**: [https://asisten-guru.netlify.app](https://asisten-guru.netlify.app)
-**Backend (API Server)**: [https://asisten-guru-server.up.railway.app](https://asisten-guru-server.up.railway.app)
+**Backend (API Server)**: [https://asisten-guru-v2.vercel.app](https://asisten-guru-v2.vercel.app)
 
 ## 🚀 Cara Menggunakan
 
