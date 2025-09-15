@@ -1,0 +1,48 @@
+# Dependencies
+/node_modules
+/client/node_modules
+/server/node_modules
+
+# Build outputs
+/client/dist
+/client/build
+
+# Environment files
+.env
+.env.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database
+/server/prisma/dev.db
+/server/prisma/dev.db-journal
+
+# Testing
+/coverage
+/.nyc_output
+
+# Deployment
+/.netlify

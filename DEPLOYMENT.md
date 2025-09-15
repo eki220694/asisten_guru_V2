@@ -5,8 +5,8 @@
 ## 📦 Struktur Deployment
 
 - **Frontend**: Deploy ke Netlify (static site)
-- **Backend**: Deploy ke Railway (Node.js server)
-- **Database**: SQLite (file-based, disimpan di Railway)
+- **Backend**: Deploy ke Vercel (Node.js serverless functions)
+- **Database**: SQLite (file-based, disimpan di Vercel)
 
 ---
 
@@ -14,7 +14,7 @@
 
 1. Akun GitHub
 2. Akun Netlify
-3. Akun Railway
+3. Akun Vercel
 4. API key dari masing-masing platform
 
 ---
@@ -44,30 +44,32 @@ Untuk deploy otomatis:
 
 ---
 
-## ☁️ Deploy Backend ke Railway
+## ☁️ Deploy Backend ke Vercel
 
-### 1. Buat Project di Railway
-- Kunjungi [railway.app](https://railway.app)
+### 1. Buat Project di Vercel
+- Kunjungi [vercel.com](https://vercel.com)
 - Klik "New Project"
-- Pilih "Deploy from GitHub repo"
-- Pilih repo `asisten_guru_V2`
+- Pilih repo GitHub `asisten_guru_V2`
 
-### 2. Konfigurasi Service
+### 2. Konfigurasi Project
 - **Root directory**: `server`
-- **Build command**: `npm install`
-- **Start command**: `node server.js`
+- **Framework Preset**: Other
+- **Build command**: `npm run vercel-build`
+- **Output directory**: Default (tidak perlu diubah)
 
 ### 3. Tambahkan Environment Variables
 - `OPENAI_API_KEY` (jika ingin aktifkan AI)
-- `DATABASE_URL` (otomatis diatur oleh Railway untuk SQLite)
+- Database akan menggunakan file SQLite yang tersimpan di Vercel
 
 ### 4. Setup GitHub Actions (Opsional)
 Untuk deploy otomatis:
-1. Dapatkan `RAILWAY_TOKEN` dari [railway.app/account/tokens](https://railway.app/account/tokens)
-2. Dapatkan `RAILWAY_PROJECT_ID` dari dashboard Railway
-3. Tambahkan ke secrets GitHub:
-   - `RAILWAY_TOKEN`
-   - `RAILWAY_PROJECT_ID`
+1. Dapatkan `VERCEL_TOKEN` dari [vercel.com/account/tokens](https://vercel.com/account/tokens)
+2. Dapatkan `VERCEL_PROJECT_ID` dari dashboard Vercel
+3. Dapatkan `VERCEL_ORG_ID` dari dashboard Vercel
+4. Tambahkan ke secrets GitHub:
+   - `VERCEL_TOKEN`
+   - `VERCEL_PROJECT_ID`
+   - `VERCEL_ORG_ID`
 
 ---
 
@@ -79,8 +81,9 @@ Tambahkan di `Settings > Secrets and variables > Actions`:
 |-------------------------|----------------------------------|
 | `NETLIFY_AUTH_TOKEN`    | Netlify User Settings           |
 | `NETLIFY_SITE_ID`       | Netlify Site Settings           |
-| `RAILWAY_TOKEN`         | Railway Account Tokens          |
-| `RAILWAY_PROJECT_ID`    | Railway Project Settings        |
+| `VERCEL_TOKEN`          | Vercel Account Tokens           |
+| `VERCEL_PROJECT_ID`     | Vercel Project Settings         |
+| `VERCEL_ORG_ID`         | Vercel Organization Settings    |
 
 ---
 
@@ -89,7 +92,7 @@ Tambahkan di `Settings > Secrets and variables > Actions`:
 1. Push ke branch `main`
 2. GitHub Actions:
    - Build & deploy frontend ke Netlify
-   - Deploy backend ke Railway
+   - Deploy backend ke Vercel
 3. Aplikasi live dalam beberapa menit
 
 ---
@@ -98,11 +101,11 @@ Tambahkan di `Settings > Secrets and variables > Actions`:
 
 Setelah deploy:
 - Frontend: `https://<nama-site>.netlify.app`
-- Backend API: `https://<nama-service>.up.railway.app`
+- Backend API: `https://<nama-proyek-vercel>.vercel.app`
 
 Tes endpoint:
 ```bash
-curl https://<backend-url>/api/questions
+curl https://<backend-url>.vercel.app/api/questions
 ```
 
 ---
@@ -111,5 +114,5 @@ curl https://<backend-url>/api/questions
 
 Jika ada masalah deployment, cek:
 - Logs GitHub Actions
-- Logs Railway
+- Logs Vercel
 - Pastikan semua secrets sudah diatur

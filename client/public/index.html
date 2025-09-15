@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asisten Guru V2 - Bantuan untuk Guru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .features {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #667eea;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .benefits {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .benefit-item {
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Asisten Guru V2</h1>
+        <p class="subtitle">Solusi lengkap untuk membantu tugas sehari-hari guru</p>
+        <a href="/app" class="cta-button">Mulai Gunakan Sekarang</a>
+    </header>
+    
+    <div class="container">
+        <section class="features">
+            <h2 class="section-title">Fitur Utama</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Generator Soal AI</h3>
+                    <p>Buat soal ujian otomatis dengan bantuan kecerdasan buatan dalam hitungan detik.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Analisis Penilaian</h3>
+                    <p>Analisis hasil ujian siswa secara otomatis dan dapatkan insight pembelajaran.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Bank Materi</h3>
+                    <p>Simpan dan kelola materi pembelajaran dalam satu tempat yang mudah diakses.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Jadwal Mengajar</h3>
+                    <p>Atur jadwal KBM dan tambahkan reminder untuk setiap pertemuan mengajar.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="benefits">
+            <h2 class="section-title">Manfaat untuk Guru</h2>
+            <ul class="benefit-list">
+                <li class="benefit-item"> hemat waktu hingga 50%</li>
+                <li class="benefit-item">Tidak perlu instalasi</li>
+                <li class="benefit-item">Akses dari mana saja</li>
+                <li class="benefit-item">Gratis selamanya</li>
+                <li class="benefit-item">Update otomatis</li>
+                <li class="benefit-item">Mudah digunakan</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Asisten Guru V2. Dibuat untuk membantu guru Indonesia.</p>
+        <p>Aplikasi ini bisa diakses langsung via browser tanpa perlu instalasi apapun.</p>
+    </footer>
+</body>
+</html>

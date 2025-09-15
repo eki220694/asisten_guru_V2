@@ -32,8 +32,27 @@ Contoh format output:
     });
 
     const text = response.choices[0].message.content.trim();
-    const questions = JSON.parse(text);
-    return questions;
+    
+    // Coba parse JSON dengan penanganan error yang lebih baik
+    try {
+      const questions = JSON.parse(text);
+      
+      // Validasi struktur data
+      if (!Array.isArray(questions)) {
+        throw new Error('Respons AI tidak dalam format array');
+      }
+      
+      // Validasi setiap soal
+      for (const q of questions) {
+        if (!q.question || !Array.isArray(q.options) || q.options.length !== 4 || typeof q.answer !== 'number' || q.answer < 0 || q.answer > 3) {
+          throw new Error('Struktur soal tidak valid');
+        }
+      }
+      
+      return questions;
+    } catch (parseError) {
+      throw new Error('Gagal memproses respons AI: ' + parseError.message);
+    }
   } catch (err) {
     throw new Error('Gagal generate soal dari AI: ' + err.message);
   }
