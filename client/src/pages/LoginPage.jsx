@@ -1,11 +1,14 @@
 // src/pages/LoginPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
+import { login as loginApi } from '../utils/api';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,20 +16,9 @@ const LoginPage = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to login');
-      }
-
-      const data = await response.json();
-      // Simpan token atau data user di sini jika ada
-      // Contoh: localStorage.setItem('user', JSON.stringify(data.user));
+      const data = await loginApi(email, password);
+      // Gunakan fungsi login dari AuthContext untuk menyimpan token dan user
+      login(data.user, data.token);
       
       navigate('/'); // Redirect ke halaman utama setelah login
     } catch (err) {

@@ -1,31 +1,28 @@
 // src/pages/RegisterPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { register as registerApi } from '../utils/api';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess(false);
 
     try {
-      const response = await fetch('/api/users/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to register');
-      }
-
-      navigate('/login'); // Redirect ke halaman login setelah registrasi
+      const data = await registerApi(name, email, password);
+      setSuccess(true);
+      // Redirect ke halaman login setelah 2 detik
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
     } catch (err) {
       setError(err.message);
     }
@@ -66,6 +63,7 @@ const RegisterPage = () => {
           />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && <p style={{ color: 'green' }}>Registration successful! Redirecting to login...</p>}
         <button type="submit" style={{ width: '100%', padding: '10px' }}>
           Register
         </button>

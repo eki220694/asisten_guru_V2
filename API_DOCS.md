@@ -5,14 +5,109 @@
 http://localhost:5000/api
 ```
 
-## Users
+## Authentication
 ### Register
 - **POST** `/users/register`
-- Body: `{ "name", "email", "password" }`
+- Description: Mendaftarkan pengguna baru
+- Body: 
+  ```json
+  {
+    "name": "string",
+    "email": "string",
+    "password": "string"
+  }
+  ```
+- Response (201):
+  ```json
+  {
+    "message": "Registration successful",
+    "user": {
+      "id": "integer",
+      "name": "string",
+      "email": "string",
+      "role": "string",
+      "createdAt": "datetime",
+      "updatedAt": "datetime"
+    }
+  }
+  ```
+- Response (400):
+  ```json
+  {
+    "error": "Email already registered"
+  }
+  ```
 
 ### Login
 - **POST** `/users/login`
-- Body: `{ "email", "password" }`
+- Description: Melakukan autentikasi pengguna
+- Body:
+  ```json
+  {
+    "email": "string",
+    "password": "string"
+  }
+  ```
+- Response (200):
+  ```json
+  {
+    "message": "Login successful",
+    "token": "string (JWT token)",
+    "user": {
+      "id": "integer",
+      "name": "string",
+      "email": "string",
+      "role": "string",
+      "createdAt": "datetime",
+      "updatedAt": "datetime"
+    }
+  }
+  ```
+- Response (404):
+  ```json
+  {
+    "error": "User not found"
+  }
+  ```
+- Response (401):
+  ```json
+  {
+    "error": "Invalid password"
+  }
+  ```
+
+### Get Profile
+- **GET** `/users/profile`
+- Description: Mendapatkan informasi profil pengguna yang terautentikasi
+- Headers: 
+  ```
+  Authorization: Bearer <token>
+  ```
+- Response (200):
+  ```json
+  {
+    "user": {
+      "id": "integer",
+      "name": "string",
+      "email": "string",
+      "role": "string",
+      "createdAt": "datetime",
+      "updatedAt": "datetime"
+    }
+  }
+  ```
+- Response (401):
+  ```json
+  {
+    "error": "Access token required"
+  }
+  ```
+- Response (403):
+  ```json
+  {
+    "error": "Token expired" | "Invalid token" | "User not found"
+  }
+  ```
 
 ## Questions (Generator Soal)
 ### Generate Soal

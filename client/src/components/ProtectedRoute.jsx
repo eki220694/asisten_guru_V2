@@ -10,7 +10,10 @@ const ProtectedRoute = ({ children }) => {
     return <div className="loading">Memuat...</div>;
   }
 
-  if (!user) {
+  // Cek apakah token ada di localStorage
+  const token = localStorage.getItem('token');
+  
+  if (!user || !token) {
     return <Navigate to="/login" replace />;
   }
 

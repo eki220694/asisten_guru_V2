@@ -46,6 +46,50 @@ npm run dev
 
 Client akan berjalan di `http://localhost:5173`
 
+## 🔐 Sistem Autentikasi
+
+### Struktur File Terkait Autentikasi
+
+1. **Backend (Server)**:
+   - `server/controllers/userController.js` - Fungsi untuk registrasi, login, dan profil pengguna
+   - `server/routes/userRoutes.js` - Routing untuk endpoint autentikasi
+   - `server/middleware/authMiddleware.js` - Middleware untuk verifikasi token JWT
+   - `server/.env` - Konfigurasi secret key untuk JWT
+
+2. **Frontend (Client)**:
+   - `client/src/components/AuthContext.jsx` - Context provider untuk state autentikasi global
+   - `client/src/components/ProtectedRoute.jsx` - Komponen untuk melindungi route
+   - `client/src/pages/LoginPage.jsx` - Halaman login
+   - `client/src/pages/RegisterPage.jsx` - Halaman registrasi
+   - `client/src/utils/api.js` - Utility functions untuk API calls
+
+### Flow Autentikasi
+
+1. Pengguna melakukan registrasi di `/register`
+2. Pengguna melakukan login di `/login`
+3. Server menghasilkan JWT token dan mengirimkannya ke client
+4. Client menyimpan token di localStorage
+5. Untuk setiap request ke endpoint yang dilindungi, client menyertakan token di header Authorization
+6. Middleware di server memverifikasi token sebelum mengizinkan akses ke endpoint
+
+### Menambahkan Endpoint yang Dilindungi
+
+1. Tambahkan route baru di file route yang sesuai
+2. Tambahkan middleware `authenticateToken` sebagai parameter kedua di route
+3. Di controller, akses informasi pengguna melalui `req.user`
+
+Contoh:
+```javascript
+// routes/questionRoutes.js
+router.get('/protected', authenticateToken, questionController.getProtectedData);
+
+// controllers/questionController.js
+exports.getProtectedData = async (req, res) => {
+  // req.user berisi informasi pengguna yang terautentikasi
+  res.json({ message: `Hello ${req.user.name}` });
+};
+```
+
 ## 🧪 Testing
 
 ### Client Testing
@@ -112,3 +156,4 @@ git push origin feature/nama-fitur
 - [API_DOCS.md](API_DOCS.md) - Dokumentasi API
 - [AI_INTEGRATION_DOCS.md](AI_INTEGRATION_DOCS.md) - Integrasi AI
 - [DEPLOYMENT.md](DEPLOYMENT.md) - Panduan deploy
+- [AUTHENTICATION.md](AUTHENTICATION.md) - Dokumentasi sistem autentikasi

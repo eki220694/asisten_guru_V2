@@ -19,6 +19,15 @@ Aplikasi dapat diakses langsung melalui browser tanpa perlu instalasi:
 3. Aplikasi akan terbuka dan siap digunakan
 4. Tidak perlu instalasi apapun!
 
+## 🔐 Sistem Autentikasi
+
+Aplikasi menggunakan sistem autentikasi berbasis JWT (JSON Web Token) untuk keamanan:
+
+1. **Registrasi**: Pengguna baru harus mendaftar terlebih dahulu dengan nama, email, dan password
+2. **Login**: Pengguna yang sudah terdaftar dapat login dengan email dan password
+3. **Token**: Setelah login berhasil, sistem akan menghasilkan token JWT yang berlaku selama 24 jam
+4. **Proteksi Route**: Halaman-halaman utama dilindungi dan hanya dapat diakses oleh pengguna yang sudah login
+
 ## 🛠️ Untuk Developer & Administrator
 
 ### 📦 Instalasi Lokal

@@ -12,7 +12,8 @@ const prisma = new PrismaClient();
 // Middleware
 const corsOptions = {
   origin: process.env.CLIENT_URL || ['http://localhost:5173', 'http://localhost:4173', /\.netlify\.app$/, /\.vercel\.app$/],
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  exposedHeaders: ['Authorization']
 };
 app.use(cors(corsOptions));
 app.use(express.json());
