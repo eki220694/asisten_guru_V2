@@ -25,9 +25,9 @@
 - [ ] Configure custom domain (optional)
 - [ ] Set up SSL certificate (automatic for Netlify)
 
-## Railway Deployment
-- [ ] Create Railway account
-- [ ] Connect GitHub repository to Railway
+## Vercel Deployment
+- [ ] Create Vercel account
+- [ ] Connect GitHub repository to Vercel
 - [ ] Configure service settings:
   - Root directory: `server/`
   - Build command: `npm install`
@@ -36,7 +36,7 @@
   - `OPENAI_API_KEY` (if using AI features)
   - `DATABASE_URL` (should be auto-configured)
 - [ ] Configure custom domain (optional)
-- [ ] Set up SSL certificate (automatic for Railway)
+- [ ] Set up SSL certificate (automatic for Vercel)
 
 ## Post-deployment
 - [ ] Test the deployed application

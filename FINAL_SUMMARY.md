@@ -8,7 +8,7 @@ Asisten Guru V2 is a complete web application designed to help teachers with the
 - **Backend**: Node.js + Express (RESTful API)
 - **Database**: SQLite with Prisma ORM (Lightweight, file-based storage)
 - **AI Integration**: OpenAI GPT-3.5 for question generation
-- **Deployment**: Netlify (Frontend) + Railway (Backend)
+- **Deployment**: Netlify (Frontend) + Vercel (Backend)
 
 ## 🌟 Key Features
 
@@ -47,8 +47,8 @@ Asisten Guru V2 is a complete web application designed to help teachers with the
 - Continuous deployment from GitHub
 - Custom domain support
 
-### Backend (Railway)
-- Containerized Node.js application
+### Backend (Vercel)
+- Serverless Node.js application
 - Automatic scaling
 - Environment variable management
 - Database persistence
@@ -56,7 +56,7 @@ Asisten Guru V2 is a complete web application designed to help teachers with the
 
 ### Database
 - SQLite file-based database
-- Automatic backups on Railway
+- Automatic backups on Vercel
 - Prisma ORM for type-safe database access
 
 ## 🔧 Technical Implementation

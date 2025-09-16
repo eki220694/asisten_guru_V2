@@ -4,7 +4,7 @@
 - **Total Files**: 74 (excluding node_modules and .git)
 - **Lines of Code**: ~7,806 (including documentation)
 - **Main Technologies**: React, Node.js, Express, Prisma, SQLite
-- **Deployment Platforms**: Netlify (Frontend), Railway (Backend)
+- **Deployment Platforms**: Netlify (Frontend), Vercel (Backend)
 
 ## 🎯 Project Goals Achieved
 1. ✅ Created a web-based application for teachers
@@ -25,7 +25,7 @@
 - **Modern Stack**: React + Vite frontend with Node.js + Express backend
 - **Database**: SQLite with Prisma ORM for type-safe database access
 - **AI Integration**: OpenAI GPT-3.5 for intelligent question generation
-- **Deployment Ready**: Configured for Netlify and Railway with GitHub Actions
+- **Deployment Ready**: Configured for Netlify and Vercel with GitHub Actions
 - **Error Handling**: Comprehensive error handling and user feedback
 - **Security**: Proper CORS configuration and environment variable management
 
@@ -45,7 +45,7 @@
 ## 🚀 Deployment Prepared
 - **GitHub Actions**: Automated deployment workflows
 - **Netlify Configuration**: Frontend hosting setup
-- **Railway Configuration**: Backend hosting with Docker
+- **Vercel Configuration**: Backend hosting with serverless functions
 - **Environment Management**: Secure handling of API keys and secrets
 - **Health Checks**: Monitoring endpoints for service status
 
@@ -57,7 +57,7 @@
 - ✅ Ready for mass adoption by teachers
 
 ## 📞 Next Steps
-1. Deploy to production environments (Netlify + Railway)
+1. Deploy to production environments (Netlify + Vercel)
 2. Configure custom domains
 3. Set up monitoring and analytics
 4. Gather feedback from teacher users
